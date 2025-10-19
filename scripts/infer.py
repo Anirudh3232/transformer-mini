@@ -5,7 +5,7 @@ import argparse
 import torch
 
 from transformer_tiny.config import ModelConfig
-from transformer_tiny.data import ByteTokenizer, DataModule
+from transformer_tiny.data import ByteTokenizer
 from transformer_tiny.tokenizer import BOS_ID, EOS_ID, PAD_ID
 from transformer_tiny.train_eval import build_model
 from transformer_tiny.utils import load_checkpoint
