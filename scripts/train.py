@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import argparse
 
-from transformer_tiny.config import DataConfig, ModelConfig, TrainConfig
+from transformer_tiny.config import TrainConfig, ModelConfig
 from transformer_tiny.data import ByteTokenizer, DataModule
 from transformer_tiny.train_eval import build_model, train_loop
 from transformer_tiny.utils import set_seed
