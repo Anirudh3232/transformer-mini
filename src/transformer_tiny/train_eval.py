@@ -68,7 +68,7 @@ def train_loop(
     model.to(device)
     optimizer = AdamW(model.parameters(), lr=tcfg.lr, weight_decay=tcfg.weight_decay)
 
-    best = 1e9
+    best = float("inf")
     for epoch in range(1, tcfg.epochs + 1):
         tr_loss = train_one_epoch(model, train_loader, optimizer, device, PAD_ID)
         val_loss = evaluate(model, val_loader, device, PAD_ID)
