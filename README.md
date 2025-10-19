@@ -1,20 +1,13 @@
-# mini-transformer 🧠⚡
+# mini-transformer
 
 A from-scratch **seq2seq Transformer** (PyTorch) that learns a simple but demonstrative task:
-**reverse a string**. It’s small, readable, and production-ish—perfect for showcasing code quality
-to recruiters while being quick to run locally or in a Colab.
+**reverse a string**. It’s small, readable, and production-ish—perfect.
+.
 
-## Why this repo might impress
-- ✨ Clean, typed, human-friendly code (no magic “black box”).
-- 🧩 From-scratch attention, encoder/decoder blocks, positional encodings.
-- 🧪 Tests (pytest), linting, CI (GitHub Actions), Dockerfile, and Makefile.
-- 🛠️ Simple CLI to train/eval/infer. No massive datasets required.
-- 📦 Reusable tokenizer and datamodule (byte-level with PAD/BOS/EOS).
+- 🧩From-scratch attention, encoder/decoder blocks, positional encodings.
+-  Reusable tokenizer and datamodule (byte-level with PAD/BOS/EOS).
 
 > Task: Given a string like `hello123`, predict `321olleh`
-
----
-
 ## Quickstart
 
 ### 1) Install
@@ -24,7 +17,7 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### 2) Train (CPU okay)
+### 2) Train
 ```bash
 python scripts/train.py --epochs 3 --batch-size 128
 ```
@@ -36,7 +29,7 @@ python scripts/eval.py
 
 ### 4) Inference
 ```bash
-python scripts/infer.py --text "ChatGPT-5 is awesome!" --max-new-tokens 64
+python scripts/infer.py --text "Going good!" --max-new-tokens 64
 # -> prints the reversed string
 ```
 
@@ -46,7 +39,6 @@ Open `notebooks/colab_quickstart.ipynb` (minimal).
 ---
 
 ## Repo Layout
-
 ```
 .
 ├── src/transformer_tiny
@@ -74,14 +66,6 @@ Open `notebooks/colab_quickstart.ipynb` (minimal).
 ├── LICENSE
 └── README.md
 ```
-
----
-
-## Example Results
-
-After ~3 epochs on CPU, the model should reliably learn to reverse short strings.
-
-```
 input : "Hello_2025"
 target: "5202_olleH"
 pred  : "5202_olleH"
@@ -90,11 +74,7 @@ pred  : "5202_olleH"
 ---
 
 ## Notes
-
-- This is a **teaching/portfolio** repo: readable code > maximal speed.
 - Easily adapt `data.py` to new toy tasks (e.g., copy, shift, parentheses balancing).
 - For real tasks, hook in a proper dataset/tokenizer and scale the config.
 
-**MIT License** — Have fun!
-
-— Built 2025-10-19
+**MIT License** 
