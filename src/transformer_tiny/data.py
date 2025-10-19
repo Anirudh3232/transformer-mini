@@ -1,13 +1,14 @@
 from __future__ import annotations
 
-import random
 from dataclasses import dataclass
+import random
 from typing import List, Tuple
 
 import torch
 from torch.utils.data import DataLoader, Dataset
 
-from .tokenizer import PAD_ID, ByteTokenizer
+from .tokenizer import ByteTokenizer, PAD_ID
+
 
 
 ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-:.,!?@#$%^&*()"
