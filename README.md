@@ -4,7 +4,7 @@ A from-scratch **seq2seq Transformer** (PyTorch) that learns a simple but demons
 **reverse a string**. It’s small, readable, and production-ish—perfect.
 .
 
-- 🧩From-scratch attention, encoder/decoder blocks, positional encodings.
+- From-scratch attention, encoder/decoder blocks, positional encodings.
 -  Reusable tokenizer and datamodule (byte-level with PAD/BOS/EOS).
 
 > Task: Given a string like `hello123`, predict `321olleh`
