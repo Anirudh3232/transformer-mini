@@ -10,8 +10,7 @@ from tqdm import tqdm
 from .config import ModelConfig, TrainConfig
 from .model import Seq2SeqTransformer
 from .tokenizer import PAD_ID
-from .tokenizer import ByteTokenizer, PAD_ID
-
+from .utils import save_checkpoint
 
 console = Console()
 
