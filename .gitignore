@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pt
+*.ckpt
+data/*
+!.gitkeep
+examples/checkpoints/*
+!.gitkeep
+.ipynb_checkpoints/
