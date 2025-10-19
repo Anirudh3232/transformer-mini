@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import os
 import random
-from typing import Dict, Tuple
+from typing import Dict
 
 import numpy as np
 import torch
