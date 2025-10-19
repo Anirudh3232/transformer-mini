@@ -36,9 +36,8 @@ def positional_encoding(max_len: int, d_model: int, device: torch.device) -> tor
 
 
 def causal_mask(seq_len: int, device: torch.device) -> torch.Tensor:
-    # [1, 1, L, L] mask for decoder self-attn
-    mask = torch.triu(torch.ones(seq_len, seq_len, device=device), diagonal=1).bool()
-    return mask  # [L, L]
+    # [L, L] mask for decoder self-attn: True above diagonal (masked)
+    return torch.triu(torch.ones(seq_len, seq_len, device=device), diagonal=1).bool()
 
 
 def padding_mask(seq: torch.Tensor, pad_id: int) -> torch.Tensor:
