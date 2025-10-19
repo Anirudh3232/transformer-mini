@@ -1,12 +1,15 @@
 from __future__ import annotations
+
 import argparse
+
 import torch
 
 from transformer_tiny.config import ModelConfig
 from transformer_tiny.data import ByteTokenizer, DataModule
+from transformer_tiny.tokenizer import BOS_ID, EOS_ID, PAD_ID
 from transformer_tiny.train_eval import build_model
 from transformer_tiny.utils import load_checkpoint
-from transformer_tiny.tokenizer import PAD_ID, BOS_ID, EOS_ID
+
 
 def parse_args():
     p = argparse.ArgumentParser(description="Greedy decode with tiny transformer.")
@@ -22,11 +25,19 @@ def parse_args():
     p.add_argument("--max-new-tokens", type=int, default=64)
     return p.parse_args()
 
+
 def main():
     args = parse_args()
     tok = ByteTokenizer()
-    cfg = ModelConfig(d_model=args.d_model, n_heads=args.n_heads, n_layers=args.n_layers,
-                      d_ff=args.d_ff, dropout=args.dropout, max_len=args.max_len, vocab_size=tok.vocab_size)
+    cfg = ModelConfig(
+        d_model=args.d_model,
+        n_heads=args.n_heads,
+        n_layers=args.n_layers,
+        d_ff=args.d_ff,
+        dropout=args.dropout,
+        max_len=args.max_len,
+        vocab_size=tok.vocab_size,
+    )
     model = build_model(cfg)
 
     # try load checkpoint; if not available, it's fine (random weights demo)
@@ -43,11 +54,14 @@ def main():
     ids = tok.encode(args.text, max_len=args.max_len)
     src = torch.tensor([ids], dtype=torch.long, device=device)
 
-    out = model.greedy_decode(src, bos_id=BOS_ID, eos_id=EOS_ID, pad_id=PAD_ID, max_new_tokens=args.max_new_tokens)
+    out = model.greedy_decode(
+        src, bos_id=BOS_ID, eos_id=EOS_ID, pad_id=PAD_ID, max_new_tokens=args.max_new_tokens
+    )
     # drop BOS
     out_ids = out[0].tolist()[1:]
     text = tok.decode(out_ids)
     print(text)
+
 
 if __name__ == "__main__":
     main()

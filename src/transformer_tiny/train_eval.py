@@ -1,18 +1,19 @@
 from __future__ import annotations
+
 from dataclasses import asdict
 from typing import Dict, Tuple
 
 import torch
 import torch.nn as nn
+from rich.console import Console
 from torch.optim import AdamW
 from torch.utils.data import DataLoader
 from tqdm import tqdm
-from rich.console import Console
 
-from .config import TrainConfig, ModelConfig
+from .config import ModelConfig, TrainConfig
 from .model import Seq2SeqTransformer
-from .utils import set_seed, save_checkpoint
 from .tokenizer import PAD_ID
+from .utils import save_checkpoint, set_seed
 
 console = Console()
 
@@ -63,7 +64,9 @@ def evaluate(model: nn.Module, loader: DataLoader, device, pad_id: int) -> float
     return total / max(n, 1)
 
 
-def train_loop(model: nn.Module, train_loader: DataLoader, val_loader: DataLoader, tcfg: TrainConfig):
+def train_loop(
+    model: nn.Module, train_loader: DataLoader, val_loader: DataLoader, tcfg: TrainConfig
+):
     device = torch.device("cuda" if torch.cuda.is_available() and tcfg.device == "cuda" else "cpu")
     model.to(device)
     optimizer = AdamW(model.parameters(), lr=tcfg.lr, weight_decay=tcfg.weight_decay)

@@ -1,4 +1,5 @@
-from transformer_tiny.tokenizer import ByteTokenizer, BOS_ID, EOS_ID, PAD_ID
+from transformer_tiny.tokenizer import BOS_ID, EOS_ID, PAD_ID, ByteTokenizer
+
 
 def test_roundtrip():
     tok = ByteTokenizer()

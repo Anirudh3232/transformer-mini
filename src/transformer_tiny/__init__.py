@@ -1,4 +1,4 @@
-from .config import TrainConfig, ModelConfig, DataConfig
+from .config import DataConfig, ModelConfig, TrainConfig
 from .model import Seq2SeqTransformer
 from .tokenizer import ByteTokenizer
 

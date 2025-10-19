@@ -1,10 +1,13 @@
 from __future__ import annotations
+
 import random
-from typing import List, Tuple
 from dataclasses import dataclass
+from typing import List, Tuple
+
 import torch
-from torch.utils.data import Dataset, DataLoader
-from .tokenizer import ByteTokenizer, PAD_ID, BOS_ID, EOS_ID
+from torch.utils.data import DataLoader, Dataset
+
+from .tokenizer import BOS_ID, EOS_ID, PAD_ID, ByteTokenizer
 
 ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-:.,!?@#$%^&*()"
 
@@ -53,7 +56,9 @@ class DataModule:
     tok: ByteTokenizer
 
     @classmethod
-    def build(cls, train_size: int, val_size: int, max_len: int, tokenizer: ByteTokenizer) -> "DataModule":
+    def build(
+        cls, train_size: int, val_size: int, max_len: int, tokenizer: ByteTokenizer
+    ) -> "DataModule":
         train = ReverseTextDataset(train_size, max_len, tokenizer)
         val = ReverseTextDataset(val_size, max_len, tokenizer)
         return cls(train_ds=train, val_ds=val, tok=tokenizer)

@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 from dataclasses import dataclass
 from typing import List
 
@@ -6,6 +7,7 @@ PAD_ID = 256
 BOS_ID = 257
 EOS_ID = 258
 VOCAB_SIZE = 259
+
 
 @dataclass
 class ByteTokenizer:
