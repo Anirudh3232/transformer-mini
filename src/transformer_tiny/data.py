@@ -7,7 +7,8 @@ from typing import List, Tuple
 import torch
 from torch.utils.data import DataLoader, Dataset
 
-from .tokenizer import ByteTokenizer, PAD_ID
+from .tokenizer import PAD_ID, ByteTokenizer
+
 
 ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-:.,!?@#$%^&*()"
 
