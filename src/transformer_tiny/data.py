@@ -57,14 +57,22 @@ class DataModule:
 
     @classmethod
     def build(
-        cls, train_size: int, val_size: int, max_len: int, tokenizer: ByteTokenizer
+        cls,
+        train_size: int,
+        val_size: int,
+        max_len: int,
+        tokenizer: ByteTokenizer,
     ) -> "DataModule":
         train = ReverseTextDataset(train_size, max_len, tokenizer)
         val = ReverseTextDataset(val_size, max_len, tokenizer)
         return cls(train_ds=train, val_ds=val, tok=tokenizer)
 
     def train_loader(self, batch_size: int) -> DataLoader:
-        return DataLoader(self.train_ds, batch_size=batch_size, shuffle=True, collate_fn=collate_fn)
+        return DataLoader(
+            self.train_ds, batch_size=batch_size, shuffle=True, collate_fn=collate_fn
+        )
 
     def val_loader(self, batch_size: int) -> DataLoader:
-        return DataLoader(self.val_ds, batch_size=batch_size, shuffle=False, collate_fn=collate_fn)
+        return DataLoader(
+            self.val_ds, batch_size=batch_size, shuffle=False, collate_fn=collate_fn
+        )
